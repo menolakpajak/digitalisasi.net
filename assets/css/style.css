@@ -646,9 +646,24 @@ section {
 }
 
 #featured-services .box-bg {
+    isolation: isolate;
+    position: relative;
     background-color: #080808;
     border: 1px solid #1f1f1f;
     border-radius: 0.5rem;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url(../img/boxfaint.jpg);
+        background-size: cover;
+        background-position: center top;
+        background-attachment: fixed;
+        z-index: -1;
+        filter: brightness(0.2);
+        opacity: 0.25;
+    }
 }
 
 #featured-services i {
@@ -788,25 +803,48 @@ section {
     padding: 60px 0 40px 0;
 }
 
+/* #services .row {
+    gap: 0.5rem;
+} */
+
 #services .box {
     margin-bottom: 30px;
+    padding: 0.5rem 1rem;
+    /* gap: 0.25rem; */
+    /* border: 1px solid #1f1f1f; */
+    align-items: center;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    grid-template-areas:
+        "icon title"
+        "x text";
 }
 
 #services .icon {
-    float: left;
+    grid-area: icon;
+}
+
+#services .title {
+    grid-area: title;
+}
+
+#services .description {
+    grid-area: text;
 }
 
 #services .icon i {
     color: #18d26e;
-    font-size: 36px;
-    line-height: 0;
+    font-size: 2.2rem;
+    margin-right: 1rem;
+    /* line-height: 0; */
     transition: 0.5s;
 }
 
 #services .title {
-    margin-left: 60px;
+    /* margin-left: 60px; */
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 0;
+    /* margin-top: auto; */
     font-size: 18px;
 }
 
@@ -820,9 +858,11 @@ section {
 
 #services .description {
     font-size: 14px;
-    margin-left: 60px;
+    /* margin-left: 60px; */
     line-height: 24px;
-    margin-bottom: 0;
+    height: 100%;
+    color: #555;
+    margin-bottom: auto;
 }
 
 /* Call To Action Section
@@ -994,15 +1034,24 @@ section {
     grid-template-columns: repeat(3, 1fr);
 } */
 
+.portfolio-sizer {
+    width: 30% !important;
+}
+
 #portfolio .portfolio-item {
     position: relative;
     height: 360px;
-    width: 30% !important;
+    width: 30%;
+    margin-inline: 0.5rem;
     overflow: hidden;
 }
 @media (max-width: 768px) {
+    /* .portfolio-sizer {
+        width: 50% ;
+    } */
+
     #portfolio .portfolio-item {
-        width: 45% !important;
+        width: 45%;
     }
 }
 
