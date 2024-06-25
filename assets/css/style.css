@@ -1039,9 +1039,10 @@ section {
 }
 
 #portfolio .portfolio-item {
+    --width: 33%;
     position: relative;
     height: 360px;
-    width: 30%;
+    width: calc(var(--width) - 48px);
     margin-inline: 0.5rem;
     overflow: hidden;
 }
@@ -1051,7 +1052,7 @@ section {
     } */
 
     #portfolio .portfolio-item {
-        width: 45%;
+        --width: 100%;
     }
 }
 
